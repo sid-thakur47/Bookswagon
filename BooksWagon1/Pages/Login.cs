@@ -48,6 +48,7 @@ namespace Bookswagon.Pages
         public void Logout()
         {
             menu.Click();
+            Thread.Sleep(5000);
             logout.Click();
         }
     }

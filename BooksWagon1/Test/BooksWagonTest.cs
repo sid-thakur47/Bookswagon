@@ -6,13 +6,13 @@ using NUnit.Framework;
 
 namespace Bookswagon.Test
 {
-   public class LoginTest :BooksWagonBase
+   public class BooksWagonTest :BooksWagonBase
 
     {
         Credentials credentials = new Credentials();
        
         [Test,Order(1)]
-        public void BooksWagonTest()
+        public void LoginTest()
         {
             Login login = new Login(driver);
             login.BookwagonLogin(credentials.userName, credentials.pass);
@@ -20,6 +20,7 @@ namespace Bookswagon.Test
             Assert.AreEqual(credentials.title, title);
             //driver.Quit();
         }
+
         [Test,Order(2)]
         public void HomePageTest()
         {

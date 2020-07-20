@@ -24,7 +24,7 @@ namespace BooksWagon1.Pages
 
         public void SearchItem()
         {
-            search.SendKeys("Cobain" + Keys.Enter);
+            search.SendKeys("Cobain");
             Thread.Sleep(2000);
             searchIcon.Click();
         }
