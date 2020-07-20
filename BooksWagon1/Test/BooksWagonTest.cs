@@ -25,16 +25,24 @@ namespace Bookswagon.Test
         public void HomePageTest()
         {
             Homepage home = new Homepage(driver);
-            home.SearchItem();
+            home.SearchItem("cobain");
         }
 
-        [Test,Order(3)]
+        [Test, Order(3)]
+        public void PlaceOrderTest()
+        {
+            PlaceOrder order = new PlaceOrder(driver);
+            order.OrderBook();
+        }
+
+
+     /*   [Test, Order(4)]
         public void LogoutTest()
         {
             Login login = new Login(driver);
             login.Logout();
 
-        }
+        }*/
 
     }
 }

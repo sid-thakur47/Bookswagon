@@ -22,9 +22,9 @@ namespace BooksWagon1.Pages
         [FindsBy(How = How.XPath, Using = "//input[@id='ctl00_TopSearch1_Button1']")]
         public IWebElement searchIcon;
 
-        public void SearchItem()
+        public void SearchItem(String bookName)
         {
-            search.SendKeys("Cobain");
+            search.SendKeys(bookName);
             Thread.Sleep(2000);
             searchIcon.Click();
         }

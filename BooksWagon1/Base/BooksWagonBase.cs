@@ -13,7 +13,6 @@ namespace BooksWagon1.Base
         [OneTimeSetUp]
         public void Initilize()
         {
-            //using chrome options to disable unwanted notifications
             driver = new FirefoxDriver();
 
             //Using implicitly wait 
@@ -26,12 +25,12 @@ namespace BooksWagon1.Base
             driver.Url = "https://www.bookswagon.com/login";
         }
 
-       /* [OneTimeTearDown]
+        [OneTimeTearDown]
         public void Close()
         {
             Thread.Sleep(5000);
             driver.Quit();
 
-        }*/
+        }
     }
 }
