@@ -23,6 +23,7 @@ namespace Bookswagon.ExcelReader
             });
             DataTableCollection table = resultSet.Tables;
             DataTable resultTable = table["MyTable"];
+            stream.Close();
             return resultTable;
         }
 

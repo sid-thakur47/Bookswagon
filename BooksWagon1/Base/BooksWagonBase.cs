@@ -8,7 +8,7 @@ namespace BooksWagon1.Base
 {
    public class BooksWagonBase
     {
-        public IWebDriver driver;
+        public static IWebDriver driver;
 
         [OneTimeSetUp]
         public void Initilize()
@@ -26,12 +26,12 @@ namespace BooksWagon1.Base
             driver.Url = "https://www.bookswagon.com/login";
         }
 
-        [OneTimeTearDown]
+       /* [OneTimeTearDown]
         public void Close()
         {
             Thread.Sleep(5000);
             driver.Quit();
 
-        }
+        }*/
     }
 }

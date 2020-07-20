@@ -12,7 +12,6 @@
             userName = ExcelOperation.ReadData(1, "userName");
             pass = ExcelOperation.ReadData(1, "password");
             title = ExcelOperation.ReadData(1, "title");
-            url = ExcelOperation.ReadData(1, "url");
         }
     }
 }
