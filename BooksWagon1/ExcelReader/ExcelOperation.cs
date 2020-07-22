@@ -9,11 +9,14 @@ namespace Bookswagon.ExcelReader
 {
    public class ExcelOperation
     {
+        public static List<Datacollection> dataCol = new List<Datacollection>();
         private static DataTable ExcelToDataTable(String filename)
         {
+            //open file and returns as Stream
             FileStream stream = File.Open(filename, FileMode.Open, FileAccess.Read);
+            //Createopenxmlreader via ExcelReaderFactory
             IExcelDataReader excelDataReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-
+            //Return as DataSet
             DataSet resultSet = excelDataReader.AsDataSet(new ExcelDataSetConfiguration() // does not read excel header
             {
                 ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
@@ -34,12 +37,10 @@ namespace Bookswagon.ExcelReader
             public string colvalue { get; set; }
         }
 
-        static List<Datacollection> dataCol = new List<Datacollection>();
-
         public static void PopulateInCollection(String filename)
         {
             DataTable table = ExcelToDataTable(filename);
-            //totalRowCount = table.Row.Count;
+            //Iterate through the rows and columns of the Table
             for (int row = 1; row <= table.Rows.Count; row++)
             {
                 for (int col = 0; col < table.Columns.Count; col++)
@@ -51,6 +52,7 @@ namespace Bookswagon.ExcelReader
                         colvalue = table.Rows[row - 1][col].ToString()
 
                     };
+                    //Add all the details for each row
                     dataCol.Add(dtTable);
                 }
             }
@@ -58,15 +60,8 @@ namespace Bookswagon.ExcelReader
 
         public static string ReadData(int rowNumber, string columnName)
         {
-            try
-            {
-                string data = (from colData in dataCol where colData.colName == columnName && colData.rowNumber == rowNumber select colData.colvalue).SingleOrDefault();
-                return data.ToString();
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            string data = (from colData in dataCol where colData.colName == columnName && colData.rowNumber == rowNumber select colData.colvalue).SingleOrDefault();
+            return data.ToString();
         }
     }
 }
