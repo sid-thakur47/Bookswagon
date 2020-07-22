@@ -31,6 +31,15 @@ namespace Bookswagon.Pages
         [FindsBy(How = How.XPath, Using = "//span[@class='login-bg sprite usermenu-bg']")]
         public IWebElement menu;
 
+        [FindsBy(How = How.XPath, Using = "//div[@class='ac-container']//li[1]//a[1]")]
+        public IWebElement validation;
+
+
+        [FindsBy(How = How.XPath, Using = "//img[@id='ctl00_imglogo']")]
+        public IWebElement home;
+
+
+
 
         public void BookwagonLogin(string email,string password)
         {
@@ -43,13 +52,18 @@ namespace Bookswagon.Pages
             Thread.Sleep(5000);
         }
 
- 
-
         public void Logout()
         {
+            home.Click();
+            Thread.Sleep(1000);
             menu.Click();
             Thread.Sleep(5000);
             logout.Click();
+        }
+
+        public string Validate()
+        {
+            return validation.Text;
         }
     }
 }
