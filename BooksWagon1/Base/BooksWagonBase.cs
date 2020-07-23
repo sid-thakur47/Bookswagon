@@ -69,17 +69,20 @@ namespace BooksWagon1.Base
         [TearDown]
         public void Close()        
         {
+            test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
-                string path = TakeScreenshot("FailedTest" + count);
+                string path = TakeScreenshot(TestContext.CurrentContext.Test.Name);
+                test.Log(Status.Fail, "Test Failed");
                 test.AddScreenCaptureFromPath(path);
-                test.Fail(MarkupHelper.CreateLabel("Test Failed", ExtentColor.Red));
+                test.Fail(MarkupHelper.CreateLabel(TestContext.CurrentContext.Test.Name, ExtentColor.Red));
             }
             else if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed)
             {
-                string path = TakeScreenshot("PassTest" + count);
+                string path = TakeScreenshot(TestContext.CurrentContext.Test.Name);
+                test.Log(Status.Pass, "Test Sucessful");
                 test.AddScreenCaptureFromPath(path);
-                test.Pass(MarkupHelper.CreateLabel("Test Pass", ExtentColor.Green));
+                test.Pass(MarkupHelper.CreateLabel(TestContext.CurrentContext.Test.Name, ExtentColor.Green));
             }
             log.Info("Closing  browser");
             Thread.Sleep(5000);

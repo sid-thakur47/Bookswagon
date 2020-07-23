@@ -43,7 +43,6 @@ namespace Bookswagon.Pages
 
         public void BookwagonLogin(string email,string password)
         {
-            Thread.Sleep(5000);
             username.SendKeys(email);
             Thread.Sleep(5000);
             pass.SendKeys(password);
@@ -61,9 +60,13 @@ namespace Bookswagon.Pages
             logout.Click();
         }
 
-        public string Validate()
+        public IWebElement Validate(string type)
         {
-            return validation.Text;
+            if (type.Equals("login"))
+            {
+                return validation;
+            }
+            return loginbutton;
         }
     }
 }

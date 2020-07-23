@@ -31,9 +31,9 @@ namespace BooksWagon1.Pages
             Thread.Sleep(1000);
         }
 
-        public string Validate()
+        public IWebElement Validate()
         {
-            return validation.Text;
+            return validation;
         }
     }
 }

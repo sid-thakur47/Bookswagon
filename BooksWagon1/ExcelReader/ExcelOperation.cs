@@ -60,7 +60,7 @@ namespace Bookswagon.ExcelReader
 
         public static string ReadData(int rowNumber, string columnName)
         {
-            string data = (from colData in dataCol where colData.colName == columnName && colData.rowNumber == rowNumber select colData.colvalue).SingleOrDefault();
+            string data = (from colData in dataCol where colData.colName == columnName && colData.rowNumber == rowNumber select colData.colvalue).FirstOrDefault();
             return data.ToString();
         }
     }

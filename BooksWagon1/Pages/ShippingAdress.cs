@@ -49,9 +49,9 @@ namespace BooksWagon1.Pages
             this.addCity = addCity;
         }
 
-        public string Validate()
+        public IWebElement Validate()
         {
-            return validation.Text;
+            return validation;
         }
 
         public void AddShippingDetails(string name, string addr, string country, string state, string city, string pin, string mobileNumber)
