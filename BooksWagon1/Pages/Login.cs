@@ -34,9 +34,11 @@ namespace Bookswagon.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='ac-container']//li[1]//a[1]")]
         public IWebElement validation;
 
-
         [FindsBy(How = How.XPath, Using = "//img[@id='ctl00_imglogo']")]
-        public IWebElement home;
+        public IWebElement home; 
+
+        [FindsBy(How = How.XPath, Using = "//span[@id='ctl00_phBody_SignIn_reEmail']")]
+        public IWebElement wrongName;
 
 
 
@@ -60,13 +62,18 @@ namespace Bookswagon.Pages
             logout.Click();
         }
 
-        public IWebElement Validate(string type)
+
+    public IWebElement Validate(string type)
         {
             if (type.Equals("login"))
             {
                 return validation;
             }
-            return loginbutton;
+            else if (type.Equals("login"))
+            {
+                return loginbutton;
+            }
+            return wrongName;
         }
     }
 }

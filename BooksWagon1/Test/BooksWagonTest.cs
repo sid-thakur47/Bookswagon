@@ -2,16 +2,24 @@
 using Bookswagon.Pages;
 using BooksWagon1.Base;
 using BooksWagon1.Pages;
+using BooksWagon1.Utils;
 using NUnit.Framework;
 using System.Threading;
+using static BooksWagon1.Utils.Utility;
+
 namespace Bookswagon.Test
 {
+    [TestFixture]
+    [Parallelizable]
     public class BooksWagonTest : BooksWagonBase
 
     {
-        Credentials credentials = new Credentials();
+        public Credentials credentials = new Credentials();
+        public BooksWagonTest() : base(Browser.CHROME)
+        { 
+        }
 
-        [Test, Order(1)]
+        [Test, Order(1),Category("postive")]
         public void LoginTest()
         {
             Login login = new Login(driver);
@@ -44,7 +52,7 @@ namespace Bookswagon.Test
             log.Info("Adding shipping details");
             ShippingAdress cart = new ShippingAdress(driver);
             Assert.IsTrue(cart.Validate().Displayed);
-            cart.AddShippingDetails("siddhesh", "ulwe", "India", "Maharashtra", "panvel", "410206", "8097155154");
+            cart.AddShippingDetails();
         }
 
         [Test, Order(5)]
@@ -52,7 +60,7 @@ namespace Bookswagon.Test
         {
             log.Info("Checking order");
             ReviewOrder order = new ReviewOrder(driver);
-            Assert.IsTrue( order.Validate().Displayed);
+            Assert.IsTrue(order.Validate().Displayed);
             order.OrderReview();
         }
 
@@ -69,7 +77,7 @@ namespace Bookswagon.Test
         public void QuitBrowser()
         {
             driver.Quit();
-           // SendEmail("sidthakur6433@gmail.com", credentials.ePass);
+            Utility.SendEmail("sidthakur6433@gmail.com", credentials.ePass);
         }
     }
 }

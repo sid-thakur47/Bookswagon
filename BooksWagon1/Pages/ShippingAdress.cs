@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using System;
+using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +10,12 @@ namespace BooksWagon1.Pages
 {
     public class ShippingAdress
     {
+        readonly string name = ConfigurationManager.AppSettings["userName"];
+        readonly string addr = ConfigurationManager.AppSettings["address"];
+        readonly string state = ConfigurationManager.AppSettings["state"];
+        readonly string city = ConfigurationManager.AppSettings["city"];
+        readonly string pin = ConfigurationManager.AppSettings["pinCode"];
+        readonly string mobileNumber = ConfigurationManager.AppSettings["phoneNumber"];
         public IWebDriver driver;
 
         public ShippingAdress(IWebDriver driver)
@@ -21,9 +29,6 @@ namespace BooksWagon1.Pages
 
         [FindsBy(How = How.XPath, Using = "//textarea[@name='ctl00$cpBody$txtNewAddress']")]
         public IWebElement address;
-
-        [FindsBy(How = How.XPath, Using = "//select[@name='ctl00$cpBody$ddlNewCountry']")]
-        public IWebElement selectCountry;
 
         [FindsBy(How = How.XPath, Using = "//select[@name='ctl00$cpBody$ddlNewState']")]
         public IWebElement selectState;
@@ -54,15 +59,12 @@ namespace BooksWagon1.Pages
             return validation;
         }
 
-        public void AddShippingDetails(string name, string addr, string country, string state, string city, string pin, string mobileNumber)
+        public void AddShippingDetails()
         {
             recipientName.SendKeys(name);
             Thread.Sleep(1000);
             address.SendKeys(addr);
             Thread.Sleep(1000);
-            SelectElement countrySelect = new SelectElement(selectCountry);
-            countrySelect.SelectByText(country);
-            Thread.Sleep(5000);
             SelectElement state1 = new SelectElement(selectState);
             state1.SelectByText(state);
             Thread.Sleep(5000);
