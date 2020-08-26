@@ -1,14 +1,27 @@
-﻿using AventStack.ExtentReports;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Login.cs" company="BridgeLabz">
+// Copyright (c) 2020 All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using System.Net;
 
 namespace BooksWagon1.ExtentReport
 {
+    /// <summary>
+    /// Create extent object 
+    /// </summary>
     public class ReportManager
     {
         private static ExtentReports extent;
         private static ExtentHtmlReporter htmlReporter;
 
+        /// <summary>
+        /// to get instance of extentreport class
+        /// </summary>
+        /// <returns>extent instance</returns>
         public static ExtentReports GetInstance()
         {
             if (extent == null)

@@ -1,4 +1,10 @@
-﻿using AventStack.ExtentReports;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Login.cs" company="BridgeLabz">
+// Copyright (c) 2020 All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+using AventStack.ExtentReports;
 using AventStack.ExtentReports.MarkupUtils;
 using BooksWagon1.Utils;
 using NUnit.Framework;
@@ -6,11 +12,7 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Remote;
 using System;
-using System.Net;
-using System.Net.Mail;
 using System.Threading;
 using static BooksWagon1.Utils.Utility;
 
@@ -27,18 +29,27 @@ namespace BooksWagon1.Base
         public static int count = 1;
         private Browser _browser;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Login"/> class
+        /// </summary>
+        /// <param name="browser">initialize browser type</param>
         public BooksWagonBase(Browser browser)
         {
             _browser = browser;
         }
 
+        /// <summary>
+        /// Initilize browser before all the test
+        /// </summary>
         [OneTimeSetUp]
         public void Initilize()
         {
             ChooseBrowser(_browser);
         }
 
-
+        /// <summary>
+        /// Takes screenshot and generate report after each test
+        /// </summary>
         [TearDown]
         public void Close()        
         {
@@ -64,10 +75,15 @@ namespace BooksWagon1.Base
             {
                 throw e;
             }
+            driver.Navigate().Refresh();
             Thread.Sleep(5000);
             extent.Flush();
         }
 
+        /// <summary>
+        /// Choose browser
+        /// </summary>
+        /// <param name="browser">type of browser</param>
         private void ChooseBrowser(Browser browser)
         {
             if (browser == Browser.CHROME)

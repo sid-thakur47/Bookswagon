@@ -1,4 +1,10 @@
-﻿using ExcelDataReader;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Login.cs" company="BridgeLabz">
+// Copyright (c) 2020 All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+using ExcelDataReader;
 using System;
 using System.Collections.Generic;
 using System.Data;

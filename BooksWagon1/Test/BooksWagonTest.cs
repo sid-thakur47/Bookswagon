@@ -1,8 +1,13 @@
-﻿using Bookswagon.ExcelReader;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Login.cs" company="BridgeLabz">
+// Copyright (c) 2020 All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Bookswagon.ExcelReader;
 using Bookswagon.Pages;
 using BooksWagon1.Base;
 using BooksWagon1.Pages;
-using BooksWagon1.Utils;
 using NUnit.Framework;
 using System.Threading;
 using static BooksWagon1.Utils.Utility;
@@ -19,9 +24,10 @@ namespace Bookswagon.Test
         { 
         }
 
-        [Test, Order(1),Category("postive")]
+        [Test, Order(1)]
         public void LoginTest()
         {
+            log.Info("Starting Login Test");
             Login login = new Login(driver);
             login.BookwagonLogin(credentials.userName, credentials.pass);
             Assert.IsTrue(login.Validate("login").Displayed);
@@ -77,7 +83,7 @@ namespace Bookswagon.Test
         public void QuitBrowser()
         {
             driver.Quit();
-            Utility.SendEmail("sidthakur6433@gmail.com", credentials.ePass);
+            SendEmail(credentials.ePass);
         }
     }
 }

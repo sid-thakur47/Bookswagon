@@ -1,15 +1,25 @@
-﻿using OpenQA.Selenium;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Login.cs" company="BridgeLabz">
+// Copyright (c) 2020 All Rights Reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
-using System;
 using System.Configuration;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace BooksWagon1.Pages
 {
+    /// <summary>
+    /// Stores all web elements of shipping address page
+    /// </summary>
     public class ShippingAdress
     {
+        /// <summary>
+        /// Read data from config file
+        /// </summary>
         readonly string name = ConfigurationManager.AppSettings["userName"];
         readonly string addr = ConfigurationManager.AppSettings["address"];
         readonly string state = ConfigurationManager.AppSettings["state"];
@@ -18,12 +28,19 @@ namespace BooksWagon1.Pages
         readonly string mobileNumber = ConfigurationManager.AppSettings["phoneNumber"];
         public IWebDriver driver;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShippingAdress"/> class
+        /// </summary>
+        /// <param name="driver">to control browser</param>
         public ShippingAdress(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
 
+        /// <summary>
+        /// Web elements
+        /// </summary>
         [FindsBy(How = How.XPath, Using = "//input[@name='ctl00$cpBody$txtNewRecipientName']")]
         public IWebElement recipientName;
 
@@ -48,17 +65,18 @@ namespace BooksWagon1.Pages
         [FindsBy(How = How.XPath, Using = "//div[@class='title']")]
         public IWebElement validation;
         
-
-        public ShippingAdress(IWebElement addCity)
-        {
-            this.addCity = addCity;
-        }
-
+        /// <summary>
+        /// Validate shipping address page
+        /// </summary>
+        /// <returns>web element for title of page</returns>
         public IWebElement Validate()
         {
             return validation;
         }
 
+        /// <summary>
+        /// add shipping details of the user
+        /// </summary>
         public void AddShippingDetails()
         {
             recipientName.SendKeys(name);
