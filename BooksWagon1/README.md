@@ -5,7 +5,7 @@ Bookswagon Website Automation
 
 ## Description
 
-* The project is to automate Bookswagon.com which is books e-commerce application
+* The project is to automate Bookswagon.com which is e-commerce website for buying books
 
 ## Prerequisites
 
@@ -74,4 +74,3 @@ Bookswagon Website Automation
 ## Author
 
 * Siddhesh Thakur
-
