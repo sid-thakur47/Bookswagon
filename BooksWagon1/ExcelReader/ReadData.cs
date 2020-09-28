@@ -21,7 +21,7 @@ namespace Bookswagon.ExcelReader
         /// </summary>
         public Credentials()
         {
-            ExcelOperation.PopulateInCollection(@"C:\Users\Shivani\Desktop\Backup\Hybrid.xlsx");
+            ExcelOperation.PopulateInCollection(@"C:\Users\sidth\Desktop\DataDriven\Hybrid.xlsx");
             userName = ExcelOperation.ReadData(1, "userName");
             pass = ExcelOperation.ReadData(1, "password");
             ePass = ExcelOperation.ReadData(1, "emailPass");
