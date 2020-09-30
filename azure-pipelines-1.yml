@@ -26,6 +26,14 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*BooksWagon1*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
